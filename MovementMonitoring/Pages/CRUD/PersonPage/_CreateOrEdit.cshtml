@@ -1,0 +1,35 @@
+﻿@using MovementMonitoring.Pages.CRUD.CameraPage
+@model PersonDTO 
+
+<form id="create-form" method="post" enctype="multipart/form-data" asp-page="Index" asp-route-id="@Model.Id" asp-page-handler="CreateOrEdit" onsubmit="return jQueryModalPost(this);">
+    <input type="hidden" asp-for="Guid" />
+    <div class="form-floating mb-3 ">
+        <input asp-for="Name" class="form-control" required data-val-required="Вы пропустили это поле." />
+        <label asp-for="Name" class="form-label">Имя</label>
+        <span asp-validation-for="Name" class="text-danger" data-valmsg-replace="true"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Description" class="form-control" required data-val-required="Вы пропустили это поле." />
+        <label asp-for="Description" class="control-label">Описание</label>
+        <span asp-validation-for="Description" class="text-danger" data-valmsg-replace="true"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <select asp-for="AccessLevelId" asp-items="Model.Selects" class="form-select"></select>
+        <label asp-for="AccessLevelId" class="form-label">Уровень доступа</label>
+    </div>
+    
+    <div class="d-grid gap-1" style="display:flex; justify-content:center;">
+        <input type="file" id="upload" accept="image/png, image/jpeg" asp-for="Files" multiple>
+        <label class="btn btn-lg btn_green btn_round" for="upload">Добавить фото лица</label>
+
+        <button type="submit" class="btn btn-lg btn_green btn_round">Сохранить</button>
+        <button type="button" class="btn btn-lg btn_dark btn_round" data-bs-dismiss="modal" aria-label="Close">Отмена</button>
+    </div>
+    
+</form>
+
+<style>
+    input[type=file]{
+        display: none;
+    }
+</style>

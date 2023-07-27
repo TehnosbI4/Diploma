@@ -1,0 +1,20 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Перемещения";
+}
+
+<h1 style="display:flex; justify-content:center;">@ViewData["Title"]</h1>
+
+<div>
+    <div id="viewAll" class="card-body table-responsive"></div>
+</div>
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#viewAll').load('?handler=ViewAllPartial');
+        });
+        CheckUpdate("Movement");
+    </script>
+}

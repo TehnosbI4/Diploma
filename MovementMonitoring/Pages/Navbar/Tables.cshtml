@@ -1,0 +1,48 @@
+﻿@page
+@model MovementMonitoring.Pages.Layout.TablesModel
+@{
+    ViewData["Title"] = "Таблицы";
+}
+<div class="text-center">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+    <br>
+</div>
+
+<style>
+    .center {
+        display: inline-block
+    }
+
+    .center li {
+        text-align: left;
+        font-size: 22px;
+    }
+</style>
+
+<p style="text-indent: 25px; font-size: 22px;">В таблицах хранятся результаты работы программы. Тут можно найти информацию о помещениях, идентифицированных персонах, видеокамерах, уровнях доступа, историю перемещения сотрудников и нарушений ими правил доступа на предприятии.</p>
+
+
+<div style="width: 100%; text-align: center;">
+    <ul class="center">
+        <li class="li_green">
+            <a class="nav-link text-dark" asp-area="" asp-page="/CRUD/AccessLevelPage/Index">Уровни доступа</a>
+        </li>
+        <li class="li_green">
+            <a class="nav-link text-dark" asp-area="" asp-page="/CRUD/RoomPage/Index">Помещения</a>
+        </li>
+        <li class="li_green">
+            <a class="nav-link text-dark" asp-area="" asp-page="/CRUD/CameraPage/Index">Видеокамеры</a>
+        </li>
+        <li class="li_green">
+            <a class="nav-link text-dark" asp-area="" asp-page="/CRUD/PersonPage/Index">Персоны</a>
+        </li>
+        <li class="li_green">
+            <a class="nav-link text-dark" asp-area="" asp-page="/CRUD/MovementPage/Index">Перемещения</a>
+        </li>
+        <li class="li_green">
+            <a class="nav-link text-dark" asp-area="" asp-page="/CRUD/ViolationPage/Index">Нарушения</a>
+        </li>
+    </ul>
+</div>
+
+

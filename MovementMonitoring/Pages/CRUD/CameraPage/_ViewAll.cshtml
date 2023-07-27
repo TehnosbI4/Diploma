@@ -1,0 +1,74 @@
+﻿@using MovementMonitoring.Models
+@model IEnumerable<Camera>
+
+
+<div class="container">
+    <br />
+    <div style="width:100%; margin:0 auto;">
+        <table id="table" class="table table-hover table-bordered dt-responsive" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Название</th>
+                    <th>Описание</th>
+                    <th>Название помещения</th>
+                    <th>Опции</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count() != 0)
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.Id
+                            </td>
+                            <td>
+                                @item.Name
+                            </td>
+                            <td>
+                                @item.Description
+                            </td>
+                            <td>
+                                @item.Room!.Name
+                            </td>
+                            <td>
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <form method="post" asp-page="Index" asp-route-id="@item.Id" asp-page-handler="Delete" onsubmit="return jQueryModalDelete(this)" class="d-inline">
+                                        <div class="d-grid gap-1">
+                                            <button type="button" class="btn btn-sm btn_green btn_sm_round" onclick="jQueryModalGet('/CRUD/CameraPage?handler=Details&id=@item.Id','Подробнее о видеокамере')"><b>Подробнее</b></button>
+                                            <button type="button" class="btn btn-sm btn_dark btn_sm_round" onclick="jQueryModalGet('/CRUD/CameraPage?handler=CreateOrEdit&id=@item.Id','Редактировать видеокамеру')"><b>Изменить</b></button>
+                                            <button type="submit" class="btn btn-sm btn_dark btn_sm_round"><b>Удалить</b></button>
+                                        </div>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <div class="d-grid gap-1">
+                                        <button type="button" class="btn btn-sm btn_green btn_sm_round" onclick="jQueryModalGet('/CRUD/CameraPage?handler=Details&id=@item.Id','Подробнее о видеокамере')"><b>Подробнее</b></button>
+                                    </div>
+                                }
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th>Опции</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+<script>
+    createTable();
+</script>
+

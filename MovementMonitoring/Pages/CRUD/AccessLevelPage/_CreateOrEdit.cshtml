@@ -1,0 +1,28 @@
+﻿@using MovementMonitoring.Models
+@model AccessLevel
+<form id="create-form" method="post" asp-page="Index" asp-route-id="@Model.Id" asp-page-handler="CreateOrEdit" onsubmit="return jQueryModalPost(this);">
+    <div class="form-floating mb-3 ">
+        <input asp-for="Name" class="form-control" required data-val-required="Вы пропустили это поле." />
+        <label asp-for="Name" class="form-label">Название</label>
+        <span asp-validation-for="Name" class="text-danger" data-valmsg-replace="true"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Description" class="form-control" required data-val-required="Вы пропустили это поле." />
+        <label asp-for="Description" class="control-label">Описание</label>
+        <span asp-validation-for="Description" class="text-danger" data-valmsg-replace="true"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="StartTime" class="form-control" type="time" required data-val-required="Вы пропустили это поле." />
+        <label asp-for="StartTime" class="control-label">Время открытия доступа</label>
+        <span asp-validation-for="StartTime" class="text-danger" data-valmsg-replace="true"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="EndTime" class="form-control" type="time" required data-val-required="Вы пропустили это поле." />
+        <label asp-for="EndTime" class="control-label">Время закрытия доступа</label>
+        <span asp-validation-for="EndTime" class="text-danger" data-valmsg-replace="true"></span>
+    </div>
+    <div class="d-grid gap-1" style="display:flex; justify-content:center;">
+        <button type="submit" class="btn btn-lg btn_green btn_round">Сохранить</button>
+        <button type="button" class="btn btn-lg btn_dark btn_round" data-bs-dismiss="modal" aria-label="Close">Отмена</button>
+    </div>
+</form>

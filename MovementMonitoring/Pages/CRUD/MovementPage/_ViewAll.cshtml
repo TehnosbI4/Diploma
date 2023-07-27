@@ -1,0 +1,76 @@
+﻿@using MovementMonitoring.Models
+@model IEnumerable<Movement>
+
+
+<div class="container">
+    <br />
+    <div style="width:100%; margin:0 auto;">
+        <table id="table" class="table table-hover table-bordered dt-responsive" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Помещение</th>
+                    <th>Персона</th>
+                    <th>Время вхождения</th>
+                    <th>Время последнего обнаружения</th>
+                    <th>Время выхода</th>
+                    <th>Это нарушение</th>
+                    <th>Опции</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count() != 0)
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.Id
+                            </td>
+                            <td>
+                                @item.Room!.Name
+                            </td>
+                            <td>
+                                @item.CurrentPerson!.Name
+                            </td>
+                            <td>
+                                @(item.EnteringTime.ToString(@"dd\.MM\.yyyy HH\:mm\:ss"))
+                            </td>
+                            <td>
+                                @(item.LastDetectionTime.ToString(@"dd\.MM\.yyyy HH\:mm\:ss"))
+                            </td>
+                            <td>
+                                @(item.LeavingTime != null ? item.LeavingTime.Value.ToString(@"dd\.MM\.yyyy HH\:mm\:ss") : "пока в помещении")
+                            </td>
+                            <td>
+                                @(item.IsViolation ? "Да" : "Нет")
+                            </td>
+                            <td>
+                                <div class="d-grid gap-1">
+                                    <button type="button" class="btn btn-sm btn_green btn_sm_round" onclick="jQueryModalGet('/CRUD/MovementPage?handler=Details&id=@item.Id','Подробнее о перемещении')"><b>Подробнее</b></button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th>Опции</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+<script>
+    createTable();
+</script>
+

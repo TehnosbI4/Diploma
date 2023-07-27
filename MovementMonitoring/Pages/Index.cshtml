@@ -1,0 +1,65 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Домашняя страница";
+}
+
+<style>
+    .center {
+        display: inline-block
+    }
+
+    .center li {
+        text-align: left;
+        font-size: 18px;
+    }
+</style>
+
+<div class="text-center">
+    <h1 class="display-4">Мониторинг перемещения сотрудников по территории предприятия</h1>
+    <br>
+    <h2>Добро пожаловать, @(User.Identity!.Name)!</h2>
+    <br>
+    <div style="width: 50%; float:left">
+        <h2>Таблицы</h2>
+        <ul class="center">
+            <li class="li_green">
+                <a class="nav-link text-dark" asp-area="" asp-page="/CRUD/AccessLevelPage/Index">Уровни доступа</a>
+            </li>
+            <li class="li_green">
+                <a class="nav-link text-dark" asp-area="" asp-page="/CRUD/RoomPage/Index">Помещения</a>
+            </li>
+            <li class="li_green">
+                <a class="nav-link text-dark" asp-area="" asp-page="/CRUD/CameraPage/Index">Видеокамеры</a>
+            </li>
+            <li class="li_green">
+                <a class="nav-link text-dark" asp-area="" asp-page="/CRUD/PersonPage/Index">Персоны</a>
+            </li>
+            <li class="li_green">
+                <a class="nav-link text-dark" asp-area="" asp-page="/CRUD/MovementPage/Index">Перемещения</a>
+            </li>
+            <li class="li_green">
+                <a class="nav-link text-dark" asp-area="" asp-page="/CRUD/ViolationPage/Index">Нарушения</a>
+            </li>
+        </ul>
+    </div>
+    <div style="width: 50%; float:right">
+        <h2>Опции администратора</h2>
+        @if (User.IsInRole("Admin"))
+        {
+            <ul class="center">
+                <li class="li_green">
+                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Зарегистрировать нового пользователя</a>
+                </li>
+                <li class="li_green">
+                    <a class="nav-link text-dark" asp-area="" asp-page="/CSV">Загрузить статистику</a>
+                </li>
+            </ul>
+        }
+        else
+        {
+            <p>Вашего уровня привилегий недостаточно для использования опций. Обратитесь к администратору системы.</p>
+        }
+    </div>
+</div>
+

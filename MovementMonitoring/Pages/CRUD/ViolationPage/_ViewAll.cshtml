@@ -1,0 +1,66 @@
+﻿@using MovementMonitoring.Models
+@model IEnumerable<Violation>
+
+
+<div class="container">
+    <br />
+    <div style="width:100%; margin:0 auto;">
+        <table id="table" class="table table-hover table-bordered dt-responsive" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Помещение</th>
+                    <th>Нарушитель</th>
+                    <th>Время нарушения</th>
+                    <th>Тип нарушения</th>
+                    <th>Опции</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count() != 0)
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.Id
+                            </td>
+                            <td>
+                                @item.Movement!.Room!.Name
+                            </td>
+                            <td>
+                                @item.Movement!.CurrentPerson!.Name
+                            </td>
+                            <td>
+                                @(item.DateTime.ToString(@"dd\.MM\.yyyy HH\:mm\:ss"))
+                            </td>
+                            <td>
+                                @item.Type
+                            </td>
+                            <td>
+                                <div class="d-grid gap-1">
+                                    <button type="button" class="btn btn-sm btn_green btn_sm_round" onclick="jQueryModalGet('/CRUD/ViolationPage?handler=Details&id=@item.Id','Подробнее о нарушении')"><b>Подробнее</b></button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th>Опции</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+<script>
+    createTable();
+</script>
+

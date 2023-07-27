@@ -1,0 +1,41 @@
+﻿data_path: ..\data\images\test_images
+model_path: ..\models\backbone_ir50_ms1m_epoch120.pth
+events_path: ..\data\images\events
+cameras_path: ..\data\images\cameras
+uploads_path: ..\data\images\uploads
+supported_extensions:
+  - .jpg
+  - .jpeg
+  - .png
+face_size: 
+  - 112
+  - 112
+sources:
+- source1:
+    src: ..\data\videos\test_videos\Untitled video - Made with Clipchamp.mp4
+    type: VIDEO
+    res: 640
+
+#- source1:
+#    src: ..\data\images\test_images\3595347.jpg
+#    type: IMAGE
+#    res: 2399
+#- source2:
+#    src: ..\data\images\test_images\c46c87e805ad5907f709e3bd487417f0.jpg
+#    type: IMAGE
+#    res: 831
+#- source3:
+#    src: ..\data\images\test_images\f470c1088bd6bc768066b2f8f185ca59.jpg
+#    type: IMAGE
+#    res: 1000
+
+
+
+
+
+
+
+
+
+
+

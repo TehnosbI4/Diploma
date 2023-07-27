@@ -1,0 +1,18 @@
+﻿@using MovementMonitoring.Models
+@model Camera
+
+<form id="create-form" method="post" asp-page="Index" asp-route-id="@Model.Id">
+    <div style="display:flex;">
+        <ul>
+            <li class="li_green"><b>ID: </b>@Model.Id</li>
+            <li class="li_green"><b>Название: </b>@Model.Name</li>
+            <li class="li_green"><b>Описание: </b>@Model.Description</li>
+            <li class="li_green"><b>Название помещения: </b>
+                <a href="#" onclick="jQueryModalGet('/CRUD/RoomPage?handler=Details&id=@Model.Room!.Id','Подробнее о помещении')">@Model.Room!.Name</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col text-center">
+        <button type="button" class="btn btn-lg btn_dark btn_round" data-bs-dismiss="modal" aria-label="Close">Назад</button>
+    </div>
+</form>

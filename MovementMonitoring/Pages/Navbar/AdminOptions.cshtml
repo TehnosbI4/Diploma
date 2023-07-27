@@ -1,0 +1,34 @@
+﻿@page
+@model MovementMonitoring.Pages.Navbar.AdminOptionsModel
+@{
+    ViewData["Title"] = "Опции администратора";
+}
+<div class="text-center">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+    <br>
+</div>
+
+<style>
+    .center {
+        display: inline-block
+    }
+
+    .center li {
+        text-align: left;
+        font-size: 22px;
+    }
+</style>
+
+<p style="text-indent: 25px; font-size: 22px;">Здесь представлены опции, доступные только пользователям с ролью "Администратор". Только администратор может регистрировать новых пользователей в системе и выгружать архив со статистикой функционирования системы.</p>
+
+
+<div style="width: 100%; text-align: center;">
+    <ul class="center">
+        <li class="li_green">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Зарегистрировать нового пользователя</a>
+        </li>
+        <li class="li_green">
+            <a class="nav-link text-dark" asp-area="" asp-page="/CSV">Загрузить статистику</a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,23 @@
+﻿@using MovementMonitoring.Pages.CRUD.CameraPage
+@model CameraDTO 
+
+<form id="create-form" method="post" asp-page="Index" asp-route-id="@Model.Id" asp-page-handler="CreateOrEdit" onsubmit="return jQueryModalPost(this);">
+    <div class="form-floating mb-3 ">
+        <input asp-for="Name" class="form-control" required data-val-required="Вы пропустили это поле." />
+        <label asp-for="Name" class="form-label">Название</label>
+        <span asp-validation-for="Name" class="text-danger" data-valmsg-replace="true"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Description" class="form-control" required data-val-required="Вы пропустили это поле." />
+        <label asp-for="Description" class="control-label">Описание</label>
+        <span asp-validation-for="Description" class="text-danger" data-valmsg-replace="true"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <select asp-for="RoomId" asp-items="Model.Selects" class="form-select"></select>
+        <label asp-for="RoomId" class="form-label">Помещение</label>
+    </div>
+    <div class="d-grid gap-1" style="display:flex; justify-content:center;">
+        <button type="submit" class="btn btn-lg btn_green btn_round">Сохранить</button>
+        <button type="button" class="btn btn-lg btn_dark btn_round" data-bs-dismiss="modal" aria-label="Close">Отмена</button>
+    </div>
+</form>

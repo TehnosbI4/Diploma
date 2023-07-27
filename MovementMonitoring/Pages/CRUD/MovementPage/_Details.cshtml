@@ -1,0 +1,62 @@
+﻿@using MovementMonitoring.Models
+@model Movement
+
+<form id="create-form" method="post" asp-page="Index" asp-route-id="@Model.Id">
+    <div style="display:flex;">
+        <ul>
+            <li class="li_green"><b>ID: </b>@Model.Id</li>
+            <li class="li_green">
+                <b>Помещение: </b>
+                <a href="#" onclick="jQueryModalGet('/CRUD/RoomPage?handler=Details&id=@Model.Room!.Id','Подробнее о помещении')">@Model.Room!.Name</a>
+            </li>
+            <li class="li_green">
+                <b>Видеокамера: </b>
+                <a href="#" onclick="jQueryModalGet('/CRUD/CameraPage?handler=Details&id=@Model.Camera!.Id','Подробнее о видеокамере')">@Model.Camera!.Name</a>
+            </li>
+            <li class="li_green">
+                <b>Обнаруженная персона: </b>
+                <a href="#" onclick="jQueryModalGet('/CRUD/PersonPage?handler=Details&id=@Model.CurrentPerson!.Id','Подробнее об обнаруженной персоне')">@Model.CurrentPerson!.Name</a>
+            </li>
+            <li class="li_green">
+                <b>Последнее фото обнаруженной персоны: </b>
+                <div>
+                    <img src="@Url.Content(@String.Concat(@"~/pythonProject/", Model.LastPhotoPath!.Replace("..\\", "")).Replace("\\", "/"))" alt="Sample Photo" />
+                </div>
+            </li>
+            <li class="li_green">
+                <b>Наиболее похожая персона: </b>
+                <a href="#" onclick="jQueryModalGet('/CRUD/PersonPage?handler=Details&id=@Model.MostSimilarPerson!.Id','Подробнее об наиболее похожей персоне')">@Model.MostSimilarPerson!.Name</a>
+            </li>
+            <li class="li_green">
+                <b>Последнее фото наиболее похожей персоны: </b>
+                <div>
+                    <img src="@Url.Content(@String.Concat(@"~/pythonProject/", Model.MostSimilarPhotoPath!.Replace("..\\", "")).Replace("\\", "/"))" alt="Sample Photo" />
+                </div>
+            </li>
+            <li class="li_green">
+                <b>Похожесть при первом обнаружении: </b>
+                @Model.FirstDetectionSimilarity
+            </li>
+            <li class="li_green">
+                <b>Похожесть при последнем обнаружении: </b>
+                @Model.LastDetectionSimilarity
+            </li>
+            <li class="li_green">
+                <b>Время вхождения: </b>
+                @(Model.EnteringTime.ToString(@"dd\.MM\.yyyy HH\:mm\:ss"))
+            </li>
+            <li class="li_green">
+                <b>Время последнего обнаружения: </b>
+                @(Model.LastDetectionTime.ToString(@"dd\.MM\.yyyy HH\:mm\:ss"))
+            </li>
+            <li class="li_green">
+                <b>Время выхода: </b>
+                @(Model.LeavingTime != null ? Model.LeavingTime.Value.ToString(@"dd\.MM\.yyyy HH\:mm\:ss") : "пока в помещении")
+            </li>
+            <li class="li_green"><b>Это нарушение: </b>@(Model.IsViolation ? "Да" : "Нет")</li>
+        </ul>
+    </div>
+    <div class="col text-center">
+        <button type="button" class="btn btn-lg btn_dark btn_round" data-bs-dismiss="modal" aria-label="Close">Назад</button>
+    </div>
+</form>

@@ -1,0 +1,109 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+.btn:focus, .btn:active {
+    outline: none !important;
+    box-shadow: none;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    font-family: 'GoogleSans';
+}
+
+.btn_green {
+    background: #77f7b8;
+    color: #1e1e1e;
+    border: none;
+    transition-duration: 0.4s;
+}
+
+.btn_green:hover {
+    background-color: #befada;
+    color: #1e1e1e;
+}
+
+.btn_dark {
+    background: #2e312e;
+    color: #77f7b8;
+    border: none;
+    transition-duration: 0.4s;
+}
+
+.btn_dark:hover {
+    background-color: #606060;
+    color: #77f7b8;
+}
+
+.btn_sm_round {
+    border-radius: 16px;
+    padding: 4px 15px;
+    font-size: 12px;
+}
+
+.btn_split_round {
+    border-radius: 16px;
+}
+
+
+.btn_round {
+    border-radius: 24px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.li_green {
+    color: #1e1e1e;
+    list-style-type: "\27A4";
+    padding-left: 1em;
+}
+
+.li_green::marker {
+    color: #77f7b8;
+}
+
+li a {
+    color: #1e1e1e;
+}
+
+li a:hover {
+    color: #77f7b8;
+}
+
+.paginate_button a {
+    border-width: 0px !important;
+    color: #1e1e1e !important;
+    box-shadow: none !important;
+}
+
+.page-item.active .page-link {
+    background-color: #77f7b8 !important;
+    color: #1e1e1e !important;
+}
+
+select option:checked {
+    color: #1e1e1e !important;
+    background-color: #77f7b8 !important;
+}
+
+button:focus,
+input:focus,
+select:focus {
+    box-shadow: none !important;
+}

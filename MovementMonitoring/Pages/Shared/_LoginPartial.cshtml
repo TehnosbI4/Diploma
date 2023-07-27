@@ -1,0 +1,17 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item form-control-plaintext">
+        <a class="nav-link text-dark">Вы вошли как @(User.Identity?.Name!)</a>
+    </li>
+    <li class="nav-item">
+        <form class="form-control-plaintext" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })" method="post">
+            <button type="submit" class="btn btn_dark btn_round">Выйти</button>
+        </form>
+    </li>
+}
+</ul>

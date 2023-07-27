@@ -1,0 +1,19 @@
+﻿@page
+@model LogoutModel
+@{
+    ViewData["Title"] = "Log out";
+}
+
+<header>
+    <h1>@ViewData["Title"]</h1>
+    @{
+        if (User.Identity?.IsAuthenticated ?? false)
+        {
+            @Url.Page("/Index", new { area = "" });
+        }
+        else
+        {
+            @Url.Page("/Index", new { area = "" });
+        }
+    }
+</header>

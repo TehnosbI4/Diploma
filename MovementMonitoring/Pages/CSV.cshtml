@@ -1,0 +1,20 @@
+﻿@page
+@model MovementMonitoring.Pages.CSVModel
+@{
+    ViewData["Title"] = "Загрузка статистики";
+}
+<h1 style="display:flex; justify-content:center;" class="display-4">Загрузка статистики</h1>
+
+<h2 style="display:flex; justify-content:center;">Архив с файлами csv</h2>
+<br />
+
+<p style="text-indent: 25px; font-size: 22px;">CSV-файлы (файлы данных с разделителями-запятыми) — это файлы особого типа, которые можно создавать и редактировать в Excel. В CSV-файлах данные хранятся не в столбцах, а разделенные запятыми. Текст и числа, сохраненные в CSV-файле, можно легко переносить из одной программы в другую.</p>
+<p style="text-indent: 25px; font-size: 22px;">Нажав на кнопку, вы загрузите архив с CSV-файлами, содержащими информацию из базы данных системы. Данные файлы могут быть использованы в стороннем программном обеспечении для обработки и анализа данных работы системы.</p>
+
+<div>
+    <div style="display:flex; justify-content:center;">
+        <form method="post">
+            <button type="submit" asp-page-handler="download" class="btn btn-lg btn_green btn_round">Загрузить</button>
+        </form>
+    </div>
+</div>

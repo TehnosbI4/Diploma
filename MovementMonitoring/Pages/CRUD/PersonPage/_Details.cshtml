@@ -1,0 +1,46 @@
+﻿@using MovementMonitoring.Models
+@model PersonDetails
+
+<style>
+    .thumb img {
+        margin-right: 10px; /* Отступ справа */
+        margin-bottom: 10px; /* Отступ снизу */
+    }
+</style>
+
+<form id="create-form" method="post" asp-page="Index" asp-route-id="@Model.Person.Id">
+    <div style="display:flex;">
+        <ul>
+            <li class="li_green"><b>ID: </b>@Model.Person.Id</li>
+            <li class="li_green"><b>Идентификатор персоны: </b>@Model.Person.Guid</li>
+            <li class="li_green"><b>Имя: </b>@Model.Person.Name</li>
+            <li class="li_green"><b>Описание: </b>@Model.Person.Description</li>
+            <li class="li_green"><b>Уровень доступа: </b>
+                <a href="#" onclick="jQueryModalGet('/CRUD/AccessLevelPage?handler=Details&id=@Model.Person.AccessLevel!.Id','Подробнее об уровне доступа')">@Model.Person.AccessLevel!.Name</a>
+            </li>
+            @if (Model.LastPhotoPath != null)
+            {
+                <li class="li_green">
+                    <b>Последнее фото персоны: </b>
+                    <div>
+                        <img src="@Url.Content(@String.Concat(@"~/pythonProject/", Model.LastPhotoPath.Replace("..\\", "")).Replace("\\", "/"))" alt="Sample Photo" />
+                    </div>
+                </li>
+            }
+            @if (Model.GuidPaths.Count > 0)
+            {
+                <li class="li_green"><b>Сохраненные фото персоны: </b>
+                    <p class="thumb">
+                        @foreach (var path in Model.GuidPaths)
+                        {
+                            <img src="@Url.Content(path.Replace("\\", "/"))" alt="Sample Photo" />
+                        }
+                    </p>
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="col text-center">
+        <button type="button" class="btn btn-lg btn_dark btn_round" data-bs-dismiss="modal" aria-label="Close">Назад</button>
+    </div>
+</form>

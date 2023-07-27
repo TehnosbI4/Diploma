@@ -1,0 +1,17 @@
+﻿@using MovementMonitoring.Models
+@model AccessLevel
+
+<form id="create-form" method="post" asp-page="Index" asp-route-id="@Model.Id">
+    <div style="display:flex;">
+        <ul>
+            <li class="li_green"><b>Уровень: </b>@Model.Id</li>
+            <li class="li_green"><b>Название: </b>@Model.Name</li>
+            <li class="li_green"><b>Описание: </b>@Model.Description</li>
+            <li class="li_green"><b>Время открытия доступа: </b>@Model.StartTime.TimeOfDay</li>
+            <li class="li_green"><b>Время закрытия доступа: </b>@Model.EndTime.TimeOfDay</li>
+        </ul>
+    </div>
+    <div class="col text-center">
+        <button type="button" class="btn btn-lg btn_dark btn_round" data-bs-dismiss="modal" aria-label="Close">Назад</button>
+    </div>
+</form>

@@ -1,0 +1,39 @@
+﻿@using MovementMonitoring.Models
+@model Violation
+
+<form id="create-form" method="post" asp-page="Index" asp-route-id="@Model.Id">
+    <div style="display:flex;">
+        <ul>
+            <li class="li_green"><b>ID: </b>@Model.Id</li>
+            <li class="li_green">
+                <b>Помещение: </b>
+                <a href="#" onclick="jQueryModalGet('/CRUD/RoomPage?handler=Details&id=@Model.Movement!.Room!.Id','Подробнее о помещении')">@Model.Movement!.Room!.Name</a>
+            </li>
+            <li class="li_green">
+                <b>Нарушитель: </b>
+                <a href="#" onclick="jQueryModalGet('/CRUD/PersonPage?handler=Details&id=@Model.Movement!.CurrentPerson!.Id','Подробнее об обнаруженной персоне')">@Model.Movement!.CurrentPerson!.Name</a>
+            </li>
+            <li class="li_green">
+                <b>Последнее фото нарушителя: </b>
+                <div>
+                    <img src="@Url.Content(@String.Concat(@"~/pythonProject/", Model.Movement!.LastPhotoPath!.Replace("..\\", "")).Replace("\\", "/"))" alt="Sample Photo" />
+                </div>
+            </li>
+            <li class="li_green">
+                <b>Время нарушения: </b>
+                @(Model.DateTime.ToString(@"dd\.MM\.yyyy HH\:mm\:ss"))
+            </li>
+            <li class="li_green">
+                <b>Тип нарушения: </b>
+                @Model.Type
+            </li>
+            <li class="li_green">
+                <b>Перемещение: </b>
+                <a href="#" onclick="jQueryModalGet('/CRUD/MovementPage?handler=Details&id=@Model.Movement!.Id','Подробнее о перемещении')">@Model.Movement!.Id</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col text-center">
+        <button type="button" class="btn btn-lg btn_dark btn_round" data-bs-dismiss="modal" aria-label="Close">Назад</button>
+    </div>
+</form>
